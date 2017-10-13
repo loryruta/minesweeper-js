@@ -1,0 +1,25 @@
+table {
+    width: 500px;
+    height: 500px;
+
+    border: 1px solid;
+}
+
+.cell {
+    border-radius: 5px;
+}
+
+.locked {
+    background-color: seagreen;
+}
+
+.locked:hover {
+    background-color: mediumseagreen;
+}
+
+.unlocked {
+    text-align: center;
+
+    background-color: aliceblue;
+    color: darkblue;
+}
