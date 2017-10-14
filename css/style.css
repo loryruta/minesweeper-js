@@ -1,3 +1,4 @@
+
 table {
     width: 500px;
     height: 500px;
@@ -6,6 +7,10 @@ table {
 }
 
 .cell {
+	width: auto;
+	height: auto;
+	
+	border: 1px solid;
     border-radius: 5px;
 }
 
@@ -14,6 +19,7 @@ table {
 }
 
 .locked:hover {
+	cursor: pointer;
     background-color: mediumseagreen;
 }
 
@@ -22,4 +28,8 @@ table {
 
     background-color: aliceblue;
     color: darkblue;
+}
+
+.mine {
+	background-color: red;
 }
