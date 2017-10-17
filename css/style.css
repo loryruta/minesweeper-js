@@ -1,35 +1,58 @@
 
-table {
-    width: 500px;
-    height: 500px;
+.minesweeper {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 
-    border: 1px solid;
+    display: inline-block;
 }
 
 .cell {
-	width: auto;
-	height: auto;
-	
-	border: 1px solid;
-    border-radius: 5px;
+    text-align: center;
+
+    border: solid;
+}
+
+/* undiscovered cell */
+.undiscovered {
+    color: white;
+    font-weight: bold;
+
+    background-color: #A5D6A7;
+    border-color: #66BB6A;
+}
+
+.undiscovered:hover {
+    cursor: pointer;
+
+    background-color: #C8E6C9;
 }
 
 .locked {
-    background-color: seagreen;
+    cursor: default;
+    pointer-events: none;
 }
 
 .locked:hover {
-	cursor: pointer;
-    background-color: mediumseagreen;
+    cursor: default;
 }
 
-.unlocked {
-    text-align: center;
+/* normal discovered cell */
+.normal-discovered {
+. locked;
+
+    color: darkblue;
+    font-weight: bold;
 
     background-color: aliceblue;
-    color: darkblue;
+    border-color: lightsteelblue;
 }
 
+/* mine cell */
 .mine {
-	background-color: red;
+. locked;
+
+    background-color: indianred;
+    border-color: darkred;
 }

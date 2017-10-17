@@ -5,21 +5,64 @@
     <meta charset="UTF-8">
     <title>Title</title>
 
+    <link href="https://fonts.googleapis.com/css?family=Bitter" rel="stylesheet">
+
     <!-- Styles -->
+    <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
     <!-- Js -->
-    <script src="js/jquery.js"></script>
     <script src="js/game.js"></script>
 </head>
 <body>
+<div class="container">
 
-<table id="test">
+    <div class="game-container">
+        <!-- game header -->
+        <div class="game-header">
+            <!-- game title -->
+            <div class="game-title">
+                MINESWEEPER
+            </div>
+            <!-- new game button -->
+            <div class="section-entry" style="width: 250px; float: right">
+                <div class="section-title" style=" font-size: 25px">
+                    NEW GAME
+                </div>
+            </div>
+        </div>
+        <!-- game over -->
+        <div id="game_over" class="game-over">
 
-</table>
+        </div>
+        <!-- game -->
+        <div id="minesweeper" class="minesweeper" style="width: 1000px; height: 500px"></div>
+        <!-- game footer -->
+        <div class="game-footer" style="text-align: left">
+            <!-- timer -->
+            <div class="section-entry">
+                <div class="section-title">
+                    TIMER:
+                </div>
+                <div id="timer" class="section-description">
+                    1024
+                </div>
+            </div>
+            <!-- discovered mines -->
+            <div class="section-entry">
+                <div class="section-title">
+                    MINES:
+                </div>
+                <div id="discovered_mines" class="section-description">
+                    15434
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script>
-    var m = new Minesweeper($("#test"), 5, 5);
+    new Minesweeper(document.getElementById("minesweeper"), 50, 25, 2);
 </script>
 
 </body>
