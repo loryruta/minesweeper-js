@@ -1,0 +1,42 @@
+table.minesweeper-tab {
+  width: 100%;
+  height: 100%;
+  table-layout: fixed;
+  border-spacing: 0;
+  border-collapse: separate; }
+  table.minesweeper-tab td {
+    overflow: hidden; }
+
+.cell {
+  text-align: center;
+  border: solid;
+  user-select: none; }
+
+.undiscovered {
+  color: white;
+  font-weight: bold;
+  background-color: #A5D6A7;
+  border-color: #66BB6A; }
+
+.undiscovered:hover {
+  cursor: pointer;
+  background-color: #C8E6C9; }
+
+.locked, .normal-discovered, .mine {
+  cursor: default;
+  pointer-events: none; }
+
+.locked:hover, .normal-discovered:hover, .mine:hover {
+  cursor: default; }
+
+.normal-discovered {
+  color: darkblue;
+  font-weight: bold;
+  background-color: aliceblue;
+  border-color: lightsteelblue; }
+
+.mine {
+  background-color: indianred;
+  border-color: darkred; }
+
+/*# sourceMappingURL=game.css.map */

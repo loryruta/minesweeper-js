@@ -9,51 +9,71 @@
 
     <!-- Styles -->
     <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/game.css">
 
     <!-- Js -->
+    <script src="js/menu.js"></script>
     <script src="js/game.js"></script>
 </head>
 <body>
-<div class="container">
-
-    <div class="game-container">
-        <!-- game header -->
+<!--
+Page Column -->
+<div class="page-column">
+    <!--
+    Game Panel -->
+    <div class="game-panel">
+        <!--
+        Game Header -->
         <div class="game-header">
-            <!-- game title -->
-            <div class="game-title">
-                MINESWEEPER
-            </div>
-            <!-- new game button -->
-            <div class="section-entry" style="width: 250px; float: right">
-                <div class="section-title" style=" font-size: 25px">
-                    NEW GAME
+            <div class="game-title-entry">
+                <div class="game-title">
+                    Minesweeper
                 </div>
             </div>
-        </div>
-        <!-- game over -->
-        <div id="game_over" class="game-over">
 
-        </div>
-        <!-- game -->
-        <div id="minesweeper" class="minesweeper" style="width: 1000px; height: 500px"></div>
-        <!-- game footer -->
-        <div class="game-footer" style="text-align: left">
-            <!-- timer -->
-            <div class="section-entry">
-                <div class="section-title">
-                    TIMER:
+            <div class="header-entry">
+                <div class="header-entry-title">
+                    New game
                 </div>
-                <div id="timer" class="section-description">
+            </div>
+        </div>
+        <!--
+        Game Body -->
+        <div class="game-body">
+            <!--
+            Game Over -->
+            <div id="game-over" class="game-message">
+                <div style="
+                margin-top: 150px;
+                font-size: 40px;
+                text-align: center">
+                    Ups... you lose! :(
+                </div>
+            </div>
+            <!--
+            Game Options TODO
+            <div class="game-message">
+            </div>
+            <!--
+            Minesweeper -->
+            <div id="minesweeper" class="minesweeper" style="width: 100%; height: 500px"></div>
+        </div>
+        <!--
+        Game Footer -->
+        <div class="game-footer">
+            <div class="footer-section-entry">
+                <div class="footer-section-title">
+                    Timer:
+                </div>
+                <div id="timer" class="footer-section-description">
                     1024
                 </div>
             </div>
-            <!-- discovered mines -->
-            <div class="section-entry">
-                <div class="section-title">
-                    MINES:
+            <div class="footer-section-entry">
+                <div class="footer-section-title">
+                    Mines:
                 </div>
-                <div id="discovered_mines" class="section-description">
+                <div id="discovered_mines" class="footer-section-description">
                     15434
                 </div>
             </div>
@@ -62,7 +82,9 @@
 </div>
 
 <script>
-    new Minesweeper(document.getElementById("minesweeper"), 50, 25, 2);
+    console.log("INIT");
+    var a = new Game(20, 10);
+    console.log("A");
 </script>
 
 </body>

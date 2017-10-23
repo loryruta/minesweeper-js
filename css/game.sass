@@ -1,0 +1,50 @@
+table.minesweeper-tab
+  width: 100%
+  height: 100%
+
+  table-layout: fixed
+  border-spacing: 0
+
+  border-collapse: separate
+
+  td
+    overflow: hidden
+
+.cell
+  text-align: center
+  border: solid
+  user-select: none
+
+.undiscovered
+  color: white
+  font-weight: bold
+
+  background-color: #A5D6A7
+  border-color: #66BB6A
+
+.undiscovered:hover
+  cursor: pointer
+
+  background-color: #C8E6C9
+
+.locked
+  cursor: default
+  pointer-events: none
+
+.locked:hover
+  cursor: default
+
+.normal-discovered
+  @extend .locked
+
+  color: darkblue
+  font-weight: bold
+
+  background-color: aliceblue
+  border-color: lightsteelblue
+
+.mine
+  @extend .locked
+
+  background-color: indianred
+  border-color: darkred
