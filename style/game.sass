@@ -15,17 +15,44 @@ table.minesweeper-tab
   border: solid
   user-select: none
 
-.undiscovered
-  color: white
-  font-weight: bold
+/* ------------------------------
+ * Undiscovered Cell
+ */
 
-  background-color: #A5D6A7
-  border-color: #66BB6A
+.undiscovered
+  /*Something*/
 
 .undiscovered:hover
   cursor: pointer
 
+.idle
+  font-weight: bold
+  color: white
+  background-color: #A5D6A7
+  border-color: #66BB6A
+
+.idle:hover
   background-color: #C8E6C9
+
+.warning
+  font-weight: bold
+  color: black
+  background-color: #FFD740
+  border-color: #FFAB00
+
+.warning:hover
+  background-color: #FFE57F
+
+.unknown
+  font-weight: bold
+  color: white
+  background-color: #03A9F4
+  border-color: #01579B
+
+.unknown:hover
+  background-color: #29B6F6
+
+/**/
 
 .locked
   cursor: default
@@ -48,3 +75,7 @@ table.minesweeper-tab
 
   background-color: indianred
   border-color: darkred
+
+/* ------------------------------
+ * Cell Status
+ */

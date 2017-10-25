@@ -12,16 +12,43 @@ table.minesweeper-tab {
   border: solid;
   user-select: none; }
 
+/* ------------------------------
+ * Undiscovered Cell
+ */
 .undiscovered {
-  color: white;
+  /*Something */ }
+
+.undiscovered:hover {
+  cursor: pointer; }
+
+.idle {
   font-weight: bold;
+  color: white;
   background-color: #A5D6A7;
   border-color: #66BB6A; }
 
-.undiscovered:hover {
-  cursor: pointer;
+.idle:hover {
   background-color: #C8E6C9; }
 
+.warning {
+  font-weight: bold;
+  color: black;
+  background-color: #FFD740;
+  border-color: #FFAB00; }
+
+.warning:hover {
+  background-color: #FFE57F; }
+
+.unknown {
+  font-weight: bold;
+  color: white;
+  background-color: #03A9F4;
+  border-color: #01579B; }
+
+.unknown:hover {
+  background-color: #29B6F6; }
+
+/* */
 .locked, .normal-discovered, .mine {
   cursor: default;
   pointer-events: none; }
@@ -38,5 +65,9 @@ table.minesweeper-tab {
 .mine {
   background-color: indianred;
   border-color: darkred; }
+
+/* ------------------------------
+ * Cell Status
+ */
 
 /*# sourceMappingURL=game.css.map */

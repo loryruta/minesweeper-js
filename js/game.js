@@ -11,12 +11,27 @@ Game = function (width, height) {
 
     this.cells = [];
     this.mines = [];
+    this.status = [];
     this.discovered = [];
 
-    this.minesCount = 10;
+    this.minesCount = 1;
+
     this.discoveredCount = 0;
+    this.discoveredCountToWin = this.size - this.minesCount;
 
     this.initGrid();
+
+    this.supposedMinesCount = 0;
+    this.updateSupposedMinesDisplay();
+
+    this.timer = 0;
+    this.updateTimerDisplay();
+    this.startTimer();
+};
+
+
+Game.prototype.get1dIndex = function (x, y) {
+    return this.width * y + x;
 };
 
 
@@ -26,12 +41,16 @@ Game.prototype.initCell = function (cell, x, y) {
     // By default, when initialized the cell is undiscovered.
     // The cell class is always present.
     cell.style.border.width = this.border + "px";
-    cell.className = "cell undiscovered";
+    cell.className = "cell undiscovered idle";
     cell.innerHTML = "&nbsp;";
     cell.style.fontSize = parseInt(this.cellHeight / 2) + "px";
     cell.onclick = function () {
         self.discover(cell, x, y);
     };
+    cell.oncontextmenu = function () {
+        self.nextStatus(cell, x, y);
+        return false;
+    }
 };
 
 
@@ -45,7 +64,9 @@ Game.prototype.initGrid = function () {
             this.initCell(cell, x, y);
             row.appendChild(cell);
 
-            this.cells[y * this.width + x] = cell;
+            var i = this.get1dIndex(x, y);
+            this.cells[i] = cell;
+            this.status[i] = 0;
         }
         this.grid.appendChild(row);
     }
@@ -126,12 +147,82 @@ Game.prototype.discover = function (cell, x, y) {
         var cnt = this.getAroundMinesCount(x, y);
         if (cnt === 0) {
             this.foreachCellAround(x, y, function (relX, relY) {
-                if (self.isDiscovered(x, y))
+                if (!self.isDiscovered(relX, relY) && self.getStatus(relX, relY) === 0)
                     self.discover(self.getCell(relX, relY), relX, relY);
             }, true);
             cell.innerHTML = "&nbsp;";
         } else
             cell.innerHTML = cnt;
+        this.checkWin();
+    }
+};
+
+Game.prototype.checkWin = function () {
+    // TODO RECURSIVE CALL CALLS TOO MANY TIMES THIS FUNC
+    if (this.discoveredCount === this.discoveredCountToWin) {
+        console.log("HEY YOU WON!");
+        this.openGameOverMenu();
+    }
+};
+
+
+Game.prototype.startTimer = function () {
+    const self = this;
+    window.setInterval(function () {
+        self.timer++;
+        self.updateTimerDisplay();
+    }, 1000);
+};
+
+Game.prototype.updateTimerDisplay = function () {
+    var date = new Date(null);
+    date.setSeconds(this.timer);
+    document.getElementById("timer").innerHTML = date.toISOString().substr(14, 5)
+};
+
+Game.prototype.updateSupposedMinesDisplay = function () {
+    document.getElementById("supposed_mines").innerHTML = (this.minesCount - this.supposedMinesCount).toString();
+};
+
+
+const Status = {
+    IDLE: 0,
+    WARNING: 1,
+    UNKNOWN: 2
+};
+
+Game.prototype.getStatus = function (x, y) {
+    return this.status[this.get1dIndex(x, y)];
+};
+
+Game.prototype.nextStatus = function (cell, x, y) {
+    if (this.isDiscovered(x, y))
+        return;
+    var i = this.get1dIndex(x, y);
+    if (++this.status[i] > Status.UNKNOWN) {
+        this.status[i] = Status.IDLE;
+    }
+    switch (this.status[i]) {
+        case Status.IDLE:
+            cell.className = "cell undiscovered idle";
+            cell.innerHTML = "&nbsp;";
+            // here is not needed, already done in unknown status
+            // this.supposedMinesCount--;
+            break;
+        case Status.WARNING:
+            cell.className = "cell undiscovered warning";
+            cell.innerHTML = "!";
+            // increments number of supposed mines
+            this.supposedMinesCount++;
+            this.updateSupposedMinesDisplay();
+            break;
+        case Status.UNKNOWN:
+            cell.className = "cell undiscovered unknown";
+            cell.innerHTML = "?";
+            // decrements number of supposed mines
+            this.supposedMinesCount--;
+            this.updateSupposedMinesDisplay();
+            break;
     }
 };
 
