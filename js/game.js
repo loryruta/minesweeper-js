@@ -140,7 +140,7 @@ Game.prototype.discover = function (cell, x, y) {
             mine.className = "cell mine";
             mine.innerHTML = "&nbsp;";
         }
-        this.openGameOverMenu();
+        displayGameMessage(document.getElementById("game-over"));
     } else {
         const self = this;
         cell.className = "cell normal-discovered";
@@ -158,10 +158,9 @@ Game.prototype.discover = function (cell, x, y) {
 };
 
 Game.prototype.checkWin = function () {
-    // TODO RECURSIVE CALL CALLS TOO MANY TIMES THIS FUNC
+    // TODO RECURSIVE CALLS TOO MANY TIMES THIS FUNC
     if (this.discoveredCount === this.discoveredCountToWin) {
-        console.log("HEY YOU WON!");
-        this.openGameOverMenu();
+        displayGameMessage(document.getElementById("game-win"));
     }
 };
 
@@ -235,14 +234,25 @@ Game.prototype.destroy = function () {
 };
 
 
-Game.prototype.openGameOverMenu = function () {
-    var menu = document.getElementById("game-over");
-    menu.style.zIndex = "1";
-    menu.style.animation = "fadein 2s 1";
+/**
+ * Displays the given game-message element.
+ */
+displayGameMessage = function (msgElement) {
+    msgElement.style.zIndex = "1";
+    msgElement.style.animation = "fadein 2s 1";
 };
 
-Game.prototype.closeGameOverMenu = function () {
-    var menu = document.getElementById("game-over");
-    menu.style.zIndex = "-1";
-    menu.style.animation = "";
+/**
+ * Close the given game-message element.
+ */
+hideGameMessage = function (msgElement) {
+    msgElement.style.zIndex = "-1";
+    msgElement.style.animation = "";
 };
+
+
+displayNewGameMessage = function () {
+  displayGameMessage(document.getElementById("new-game"));
+   // TODO find better way to disable new-game btn
+  document.getElementById("new-game-button").style.pointerEvents = "none";
+}

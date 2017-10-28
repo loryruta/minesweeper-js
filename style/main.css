@@ -20,13 +20,13 @@ body {
 /* */
 /* Abstract utilities */
 /* */
-.section-entry, .game-title-entry, .header-entry, .footer-section-entry {
+.section-entry, .game-title-entry, .header-entry, .new-game-button, .footer-section-entry {
   display: inline-block;
   background-color: #5D4037; }
-  .section-entry .section-title, .game-title-entry .section-title, .header-entry .section-title, .footer-section-entry .section-title, .game-title-entry .game-title, .header-entry .header-entry-title, .footer-section-entry .footer-section-title {
+  .section-entry .section-title, .game-title-entry .section-title, .header-entry .section-title, .new-game-button .section-title, .footer-section-entry .section-title, .game-title-entry .game-title, .header-entry .header-entry-title, .new-game-button .header-entry-title, .footer-section-entry .footer-section-title {
     text-align: center;
     color: #D7CCC8; }
-  .section-entry .section-description, .game-title-entry .section-description, .header-entry .section-description, .footer-section-entry .section-description, .footer-section-entry .footer-section-description {
+  .section-entry .section-description, .game-title-entry .section-description, .header-entry .section-description, .new-game-button .section-description, .footer-section-entry .section-description, .footer-section-entry .footer-section-description {
     text-align: left;
     color: white; }
 
@@ -55,15 +55,19 @@ body {
     font-weight: bold;
     font-size: 25px; }
 
-.header-entry {
+.header-entry, .new-game-button {
   float: right;
   width: 200px;
   padding-top: 20px;
   padding-bottom: 20px;
   margin-left: 20px;
   border-radius: 5px; }
-  .header-entry .header-entry-title {
+  .header-entry .header-entry-title, .new-game-button .header-entry-title {
     font-size: 16px; }
+
+.new-game-button:hover {
+  cursor: pointer;
+  background-color: #795548; }
 
 /* */
 /* Game body section */
@@ -76,12 +80,44 @@ body {
   border-top: solid 5px #5D4037;
   border-bottom: solid 5px #5D4037; }
 
+/* Game Message */
 .game-message {
   position: absolute;
+  display: block;
   width: 100%;
   height: 100%;
   z-index: -1;
-  background-color: rgba(255, 255, 255, 0.6); }
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.6);
+  /* Centered Box */ }
+  .game-message .centered-box {
+    width: 100%;
+    display: inline-block;
+    padding: 50px;
+    box-sizing: border-box; }
+    .game-message .centered-box .title {
+      text-align: center;
+      font-size: 35px;
+      color: #5D4037; }
+    .game-message .centered-box .desc {
+      text-align: left;
+      font-size: 20px;
+      color: #5D4037; }
+    .game-message .centered-box .entry .title {
+      text-align: left;
+      font-size: 30px;
+      color: #5D4037; }
+    .game-message .centered-box .entry .desc {
+      text-align: left;
+      font-size: 15px;
+      color: #5D4037; }
+    .game-message .centered-box .entry input[type=number] {
+      margin-top: 5px;
+      border: 1px solid #5D4037;
+      border-radius: 5px;
+      padding: 10px;
+      color: #5D4037;
+      user-select: none; }
 
 @keyframes fadein {
   from {
@@ -108,4 +144,4 @@ body {
   .footer-section-entry .footer-section-description {
     font-size: 14px; }
 
-/*# sourceMappingURL=main.style.map */
+/*# sourceMappingURL=main.css.map */

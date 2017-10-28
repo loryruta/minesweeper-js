@@ -30,30 +30,67 @@ Page Column -->
                     Minesweeper
                 </div>
             </div>
-
-            <div class="header-entry">
-                <div class="header-entry-title">
-                    New game
-                </div>
+            <div id="new-game-button" class="new-game-button" onclick="displayNewGameMessage()">
+              <div class="header-entry-title">
+                New game
+              </div>
             </div>
         </div>
         <!--
         Game Body -->
         <div class="game-body">
-            <!--
-            Game Over -->
-            <div id="game-over" class="game-message">
-                <div style="
-                margin-top: 150px;
-                font-size: 40px;
-                text-align: center">
-                    Ups... you lose! :(
+          <!-- Game messages are hidden by default and displayed with js -->
+          <!-- Game Over -->
+          <div id="game-over" class="game-message">
+              <div class="centered-box">
+                <div class="title">
+                  Noo... you lose...
                 </div>
+                <div class="desc">
+                  I'm so sorry for this...
+                </div>
+              </div>
             </div>
-            <!--
-            Game Options TODO
-            <div class="game-message">
+          <!--Game Win -->
+          <div id="game-win" class="game-message">
+              <div class="centered-box">
+                <div class="title">
+                  Wow
+                </div>
+                <div class="desc">
+                  Not true.
+                </div>
+              </div>
             </div>
+          <!-- New Game -->
+          <div id="new-game" class="game-message">
+            <div class="centered-box">
+              <div class="title">
+                Create a new game...
+              </div>
+              <!-- Change Width -->
+              <div class="entry" style="float: left; display: inline-block">
+                <div class="title">
+                  Width:
+                </div>
+                <div class="desc">
+                  Change the field width here.
+                </div>
+                <input id="width-field" type="number" min="5" max="30">
+              </div>
+              <!-- Change Height -->
+              <div class="entry" style="float: right; display: inline-block">
+                <div class="title">
+                  Height:
+                </div>
+                <div class="desc">
+                  Change the field height here.
+                </div>
+                <input id="height-field" type="number" min="5" max="30">
+              </div>
+              <!-- -->
+            </div>
+          </div>
             <!--
             Minesweeper -->
             <div id="minesweeper" class="minesweeper" style="width: 100%; height: 500px"></div>
@@ -66,7 +103,7 @@ Page Column -->
                     Timer:
                 </div>
                 <div id="timer" class="footer-section-description">
-                    1024
+                  <!-- Handled from script -->
                 </div>
             </div>
             <div class="footer-section-entry">
@@ -74,7 +111,7 @@ Page Column -->
                     Mines:
                 </div>
                 <div id="supposed_mines" class="footer-section-description">
-                    15434
+                  <!-- Handled from script -->
                 </div>
             </div>
         </div>
