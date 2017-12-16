@@ -14,7 +14,7 @@ Game = function (width, height) {
     this.status = [];
     this.discovered = [];
 
-    this.minesCount = 1;
+    this.minesCount = 20;
 
     this.discoveredCount = 0;
     this.discoveredCountToWin = this.size - this.minesCount;
@@ -167,7 +167,7 @@ Game.prototype.checkWin = function () {
 
 Game.prototype.startTimer = function () {
     const self = this;
-    window.setInterval(function () {
+    this.timerObj = window.setInterval(function () {
         self.timer++;
         self.updateTimerDisplay();
     }, 1000);
@@ -240,6 +240,7 @@ Game.prototype.destroy = function () {
 displayGameMessage = function (msgElement) {
     msgElement.style.zIndex = "1";
     msgElement.style.animation = "fadein 2s 1";
+	clearInterval(this.timerObj);
 };
 
 /**

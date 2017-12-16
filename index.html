@@ -30,11 +30,13 @@ Page Column -->
                     Minesweeper
                 </div>
             </div>
+			<!-- 
             <div id="new-game-button" class="new-game-button" onclick="displayNewGameMessage()">
               <div class="header-entry-title">
                 New game
               </div>
             </div>
+			-->
         </div>
         <!--
         Game Body -->
@@ -44,22 +46,35 @@ Page Column -->
           <div id="game-over" class="game-message">
               <div class="centered-box">
                 <div class="title">
-                  Noo... you lose...
+                  Noo... you lose!
                 </div>
                 <div class="desc">
-                  I'm so sorry for this...
+                  I'm so sorry for this..., try again.
                 </div>
+					
+			    <div class="new-game-button" style="float: left; margin-top: 20px; margin-left: -2px" onclick="location.reload()">
+					<div class="header-entry-title">
+						Play again!
+					</div>
+				</div>
               </div>
             </div>
           <!--Game Win -->
           <div id="game-win" class="game-message">
               <div class="centered-box">
                 <div class="title">
-                  Wow
+                  Wow you won!
                 </div>
                 <div class="desc">
-                  Not true.
+                  You are too strong to play this game.
+				  Please stop playing.
                 </div>
+				
+			    <div class="new-game-button" style="float: left; margin-top: 20px; margin-left: -2px" onclick="location.reload()">
+					<div class="header-entry-title">
+						Play again!
+					</div>
+				</div>
               </div>
             </div>
           <!-- New Game -->
@@ -132,9 +147,7 @@ Page Column -->
 </div>
 
 <script>
-    console.log("INIT");
-    var a = new Game(20, 10);
-    console.log("A");
+    var game = new Game(20, 10);
 </script>
 
 </body>
