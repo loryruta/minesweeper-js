@@ -118,7 +118,7 @@ Game.prototype.generateMines = function () {
         var mi;
         do {
             mi = Math.floor(Math.random() * this.size);
-        } while (this.isMine(mi));
+        } while (this.mines.indexOf(mi) >= 0);
         this.mines.push(mi);
     }
     console.log("Mines generated at: " + this.mines);
