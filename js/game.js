@@ -238,7 +238,7 @@ Game.prototype.destroy = function () {
  * Displays the given game-message element.
  */
 displayGameMessage = function (msgElement) {
-    msgElement.style.zIndex = "1";
+    msgElement.style.zIndex = "2";
     msgElement.style.animation = "fadein 2s 1";
 	clearInterval(this.timerObj);
 };
