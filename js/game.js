@@ -140,6 +140,7 @@ Game.prototype.discover = function (cell, x, y) {
             mine.className = "cell mine";
             mine.innerHTML = "&nbsp;";
         }
+        console.log("Game over");
         displayGameMessage(document.getElementById("game-over"));
     } else {
         const self = this;
@@ -160,6 +161,7 @@ Game.prototype.discover = function (cell, x, y) {
 Game.prototype.checkWin = function () {
     // TODO RECURSIVE CALLS TOO MANY TIMES THIS FUNC
     if (this.discoveredCount === this.discoveredCountToWin) {
+        console.log("Player Wins!");
         displayGameMessage(document.getElementById("game-win"));
     }
 };
@@ -167,10 +169,19 @@ Game.prototype.checkWin = function () {
 
 Game.prototype.startTimer = function () {
     const self = this;
-    this.timerObj = window.setInterval(function () {
+    this.haltTimer();
+    this.timer = 0;
+    this.timerId = window.setInterval(function () {
         self.timer++;
         self.updateTimerDisplay();
     }, 1000);
+};
+
+Game.prototype.haltTimer = function () {
+    if (this.timerId) {
+        clearInterval(this.timerId);
+        this.timerId = null;
+    }
 };
 
 Game.prototype.updateTimerDisplay = function () {
@@ -240,7 +251,7 @@ Game.prototype.destroy = function () {
 displayGameMessage = function (msgElement) {
     msgElement.style.zIndex = "2";
     msgElement.style.animation = "fadein 2s 1";
-	clearInterval(this.timerObj);
+    game.haltTimer();
 };
 
 /**
