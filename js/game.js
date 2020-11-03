@@ -121,7 +121,7 @@ Game.prototype.generateMines = function () {
         } while (this.mines.indexOf(mi) >= 0);
         this.mines.push(mi);
     }
-    console.log("Mines generated at: " + this.mines);
+    // console.log("Mines generated at: " + this.mines);
 };
 
 
@@ -140,7 +140,7 @@ Game.prototype.discover = function (cell, x, y) {
             mine.className = "cell mine";
             mine.innerHTML = "&nbsp;";
         }
-        console.log("Game over");
+        //console.log("Game over");
         displayGameMessage(document.getElementById("game-over"));
     } else {
         const self = this;
@@ -159,7 +159,6 @@ Game.prototype.discover = function (cell, x, y) {
 };
 
 Game.prototype.checkWin = function () {
-    // TODO RECURSIVE CALLS TOO MANY TIMES THIS FUNC
     if (this.discoveredCount === this.discoveredCountToWin) {
         console.log("Player Wins!");
         displayGameMessage(document.getElementById("game-win"));
@@ -193,7 +192,6 @@ Game.prototype.updateTimerDisplay = function () {
 Game.prototype.updateSupposedMinesDisplay = function () {
     document.getElementById("supposed_mines").innerHTML = (this.minesCount - this.supposedMinesCount).toString();
 };
-
 
 const Status = {
     IDLE: 0,
@@ -264,7 +262,7 @@ hideGameMessage = function (msgElement) {
 
 
 displayNewGameMessage = function () {
-  displayGameMessage(document.getElementById("new-game"));
-   // TODO find better way to disable new-game btn
-  document.getElementById("new-game-button").style.pointerEvents = "none";
+    displayGameMessage(document.getElementById("new-game"));
+    // TODO find better way to disable new-game btn
+    document.getElementById("new-game-button").style.pointerEvents = "none";
 }

@@ -5,7 +5,6 @@ closeGameOver = function () {
     menu.style.animation = ""
 };
 
-
 openNewGame = function () {
     const menu = document.getElementById("new-game");
     menu.style.zIndex = "1";
